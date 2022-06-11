@@ -13,7 +13,7 @@
     <div class="content_body"></div>
 
     <!-- popup_wrap -->
-    <div class="popup_wrap" data-type="window">
+    <div class="popup_wrap" data-type="window" style="display: none">
       <div class="popup">
         <div class="popup_header">
           <i class="icon64 icon_nodata"></i>
@@ -28,14 +28,28 @@
         </div>
         <div class="popup_footer">
           <div class="btn_area">
-            <button type="button" class="btn_txt_black"><span>취소</span></button>
-            <button type="button" class="btn_txt_blue"><span>확인</span></button>
+            <button type="button" class="btn_txt_black btn-popup-cancel"><span>취소</span></button>
+            <button type="button" class="btn_txt_blue btn-popup-confirm"><span>확인</span></button>
           </div>
         </div>
       </div>
     </div>
     <!-- //popup_wrap -->
-    <div class="dimmed"></div>
+    
   </div>
+  <script src="./assets/js/script.js"></script>
+  <script>
+    function popUpOpen(){
+      var __target = document.querySelectorAll('[data-type=window]');
+      __target.forEach(function(_target){
+        var myPopup = new UIComponent.Popup({
+          'target' : _target,
+        });
+        myPopup.open();
+      });
+    }
+
+    popUpOpen();
+  </script>
 </body>
 </html>
