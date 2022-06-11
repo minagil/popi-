@@ -12,11 +12,11 @@ UIComponent.Popup = function(props){
   var _popupDimmend = null;
 
   function init(){
-    setPopup();
+    setEvent();
     setButtons();
   }
 
-  function setPopup(){
+  function setEvent(){
     _target = props['target'];
     _container = _target;
 
@@ -33,9 +33,16 @@ UIComponent.Popup = function(props){
 
   function setButtons(){
     var closeBtn = _container.querySelector('.btn-popup-cancel');
+    var confirmBtn = _container.querySelector('.btn-popup-confirm');
 
     if(closeBtn){
       closeBtn.addEventListener('click',function(){
+        _self.close();
+      },false);
+    }
+
+    if(confirmBtn){
+      confirmBtn.addEventListener('click',function(){
         _self.close();
       },false);
     }
