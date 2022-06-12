@@ -10,6 +10,7 @@ UIComponent.Popup = function(props){
   var _target = null;
   var _container = null;
   var _popupDimmend = null;
+  var _items = [];
 
   function init(){
     setEvent();
@@ -19,15 +20,8 @@ UIComponent.Popup = function(props){
   function setEvent(){
     _target = props['target'];
     _container = _target;
-
     _container.addEventListener('popupOpen',function(){
-      console.log("ddd");
-      this.classList.add("show");
-      createDimmed();
-    });
-    
-    _container.addEventListener('popupClose',function(){
-      this.classList.remove("show");
+      createDimmed()
     });
   }
 
@@ -56,11 +50,15 @@ UIComponent.Popup = function(props){
 
   this.open = function() {
     _container.style.display = 'block';
+    setTimeout(function(){
+      _container.classList.add("show");
+    },500);
     _target.dispatchEvent(UIComponent.Event.popupOpen);
   }
 
   this.close = function(){
     _container.style.display = 'none';
+    _container.classList.remove("show");
     _target.dispatchEvent(UIComponent.Event.popupClose);
   }
 
