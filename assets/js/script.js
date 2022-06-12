@@ -10,7 +10,6 @@ UIComponent.Popup = function(props){
   var _target = null;
   var _container = null;
   var _popupDimmend = null;
-  var _items = [];
 
   function init(){
     setEvent();
